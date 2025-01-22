@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>React Example</title>
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
@@ -20,11 +20,59 @@
     <script type="text/babel">
       const { useState } = React;
 
-      const { users, setUsers } = useState([
-        { id: 1, name: "푸바오" },
-        { id: 2, name: "러바오" },
-        { id: 3, name: "후이바오" },
-      ]);
+      function App() {
+        // 배열 디스트럭처링으로 수정
+        const [users, setUsers] = useState([
+          { id: 1, name: "푸바오" },
+          { id: 2, name: "러바오" },
+          { id: 3, name: "후이바오" },
+        ]);
+
+        // input 텍스트 상태
+        const [text, setText] = useState("");
+
+        // id 증가 상태(key 중복 막기 위해 지금 상황에서만 쓴다)
+        const [nextId, setNextId] = useState(4);
+
+        const onChangeHandler = (e) => setText(e.target.value);
+        const onClickHandler = () => {
+          // concat : 기존 배열을 바꾸지 않고 합친 결과를 반환
+          const changeUsers = users.concat({
+            id: nextId,
+            name: text, // 우리가 input 에 입력한 값
+          });
+
+          setNextId(nextId + 1);
+          setUsers(changeUsers);
+          setText("");
+        };
+
+        const onRemove = (id) => {
+          /*
+                배열의 filter
+                    배열명.filter(callback)
+                    기존 배열에서 callback 함수를 각 요소마다 실행하고 true 를 반환하는 요소들로 배열을 다시 정의한다.
+            */
+          const filterUsers = users.filter((user) => user.id !== id);
+          setUsers(filterUsers);
+        };
+
+        // userList 화면에 뿌려주기
+        const userList = users.map((user) => (
+          <li key={user.id} onDoubleClick={() => onRemove(user.id)}>
+            {user.name}
+          </li>
+        ));
+        return (
+          <>
+            <input type="text" value={text} onChange={onChangeHandler} />
+            <button onClick={onClickHandler}>추가</button>
+            <ul>{userList}</ul>
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
   </body>
 </html>

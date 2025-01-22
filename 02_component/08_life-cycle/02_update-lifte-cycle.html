@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Time extends React.Component {
+        // 1. 생성자
+        constructor(props) {
+          super(props);
+
+          console.log("생성자 동작함...");
+
+          this.state = {
+            now: new Date().toLocaleString(), // 초기 값 설정
+          };
+        }
+
+        // 2. props 값을 state 로 변환
+        static getDerivedStateFromProps(props, state) {
+          console.log("겟머시기 동작함...");
+          console.log(props);
+          console.log(state);
+
+          return null; // props를 기반으로 상태 변경이 필요 없으므로 null 반환
+        }
+
+        // 3. 컴포넌트가 리렌더링을 할 것인지 말지 정하는 메소드
+        shouldComponentUpdate(props, state) {
+          console.log("슈드 머시기 동작함...");
+          console.log(props);
+          console.log(state);
+
+          return true; // 항상 리렌더링 허용
+        }
+
+        // 4. render()
+        render() {
+          console.log("render 호출됨...");
+
+          return (
+            <>
+              <button
+                onClick={
+                  () => this.setState({ now: new Date().toLocaleString() }) // 현재 시간 업데이트
+                }
+              >
+                현재 시간 확인
+              </button>
+              <h1>{this.state.now}</h1>
+            </>
+          );
+        }
+
+        // 5. 컴포넌트 변화를 실제 DOM 에 반영하기 직전에 호출되는 메소드
+        getSnapshotBeforeUpdate(props, state) {
+          /*
+            render 에서 만들어진 결과물이 반영되기 전 호출되며,
+            해당 메소드의 반환 값은 componentDidUpdate 에서
+            전달 받을 수 있다.
+            업데이트 하기 직전의 값을 참고할 일이 있을 때
+            사용이 된다. ex) 스크롤바 위치
+          */
+          console.log("스냅샷 머시기 동작함");
+
+          return { message: "스냅샷 찰칵 완료" };
+        }
+
+        // 6. 컴포넌트 업데이트 작업이 끝난 후 호출되는 메소드
+        /*
+            리렌더링 후 화면이 업데이트 끝나고 실행된다
+            컴포넌트가 Update 이 전에 가지고 있던 props, state, 추가적인 값을
+            접근할 수 있다.
+        */
+        componentDidUpdate(prevProps, prevState, snapshot) {
+          console.log("컴포넌트 뭐시기 호출함...");
+          console.log(snapshot);
+        }
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<Time />);
+    </script>
+  </body>
+</html>
