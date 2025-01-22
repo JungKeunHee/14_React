@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        
+        function nameCard(user) {
+            console.log("전달받은 user ?", user);
+            
+            return `${user.lastName} ${user.firstName}`
+        }
+
+        const user = {
+            firstName : "근희",
+            lastName : "정"
+        };
+
+        const element = <h1>Hello, {nameCard(user)}</h1>
+
+        ReactDOM.createRoot(document.getElementById("root")).render(element);
+        
+        /*
+            JSX 문법 내부에 {} -> 자바스크립트 값 표현식을 사용하여
+            값을 표현 할 수 있다.
+        */
+    </script>
+</body>
+</html>

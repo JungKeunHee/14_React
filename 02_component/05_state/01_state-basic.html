@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>State in Class Component</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Counter extends React.Component {
+        // 생성자 함수
+        constructor(props) {
+          super(props);
+          console.log("생성자 호출됨...");
+          // 초기 상태값 설정
+          this.state = {
+            number: 0,
+          };
+        }
+
+        // render 함수
+        render() {
+          console.log("render 함수 호출함...");
+          const { number } = this.state;
+
+          return (
+            <>
+              <h1>현재 number : {number}</h1>
+              <button onClick={() => this.setState({ number: number - 1 })}>
+                -1
+              </button>
+              <button onClick={() => this.setState({ number: number + 1 })}>
+                +1
+              </button>
+            </>
+          );
+        }
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<Counter />);
+    </script>
+  </body>
+</html>

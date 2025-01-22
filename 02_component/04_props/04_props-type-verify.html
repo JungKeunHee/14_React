@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // PropsVerify 컴포넌트
+      function PropsVerify({ name, favoriteNumber, children }) {
+        return (
+          <div>
+            <h1>제 이름은 {name}입니다</h1>
+            <h3>제가 좋아하는 숫자는 {favoriteNumber}입니다</h3>
+            <h3>제가 가진 자식은 {children}입니다</h3>
+          </div>
+        );
+      }
+
+      // PropTypes 정의
+      PropsVerify.propTypes = {
+        name: PropTypes.string,
+        favoriteNumber: PropTypes.number.isRequired,
+      };
+
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <>
+          <PropsVerify name="정근희" favoriteNumber={7}>
+            텍스트
+          </PropsVerify>
+          <PropsVerify name={3}>다른 텍스트</PropsVerify>
+        </>
+      );
+    </script>
+  </body>
+</html>
