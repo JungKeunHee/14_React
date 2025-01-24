@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      function Main() {
+        const [input, setInput] = useState(""); // 입력값 상태
+        const [userInput, setUserInput] = useState(""); // 프롬프트 입력값 상태
+        const [currentTime, setCurrentTime] = useState(null); // 입력값 저장된 시간 (Date 객체)
+        const [elapsedTime, setElapsedTime] = useState(null); // 확인 버튼 누를 때 저장된 시간 (Date 객체)
+
+        useEffect(() => {
+          const promptInput = prompt("문자열을 입력하세요:");
+          setUserInput(promptInput);
+
+          if (promptInput !== null) {
+            setCurrentTime(new Date());
+          }
+        }, []);
+
+        const onChangeHandler = (e) => {
+          setInput(e.target.value);
+        };
+
+        const onClickHandler = () => {
+          if (userInput === input) {
+            const now = new Date();
+            setElapsedTime(now);
+
+            if (currentTime) {
+              const timeDiff = Math.floor(
+                (now.getTime() - currentTime.getTime()) / 1000
+              );
+              alert(`소요된 시간은 ${timeDiff}초입니다.`);
+            }
+          } else {
+            alert("입력이 일치하지 않습니다.");
+          }
+        };
+
+        return (
+          <div>
+            <h1>입력값: {userInput}</h1>
+            <input
+              type="text"
+              value={input}
+              onChange={onChangeHandler}
+              placeholder="입력하세요"
+            />
+            <button onClick={onClickHandler}>확인</button>
+          </div>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<Main />);
+    </script>
+  </body>
+</html>
