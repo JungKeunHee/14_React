@@ -20,16 +20,42 @@
       const { useState, useRef } = React;
 
       function App() {
-        const [number, setNumber] = useState(0);
+        /* state 의 변화, 지역변수 의 변화, useRef 의 변화 */
+        const [number, setNumber] = useState(0); // state 관리
+        let variable = 0; // 지역변수 관리
+        const numberRef = useRef(0); // useRef 관리
 
         console.log("App 컴포넌트 렌더링 됨...");
 
-        const increase = () => setNumber(number + 1);
+        const increaseNumber = () => setNumber(number + 1);
+
+        /* 
+            지역변수에 변화를 주더라도 Update 에 해당 하지는 않기 때문에
+            언마운트 및 마운트가 일어나지 않아 화면 상에 변화가 존재할 수 없다.
+        */
+        const increaseVariable = () => {
+          variable += 1;
+
+          console.log("variable", variable);
+        };
+
+        /*
+            useRef 에 변화를 주더라도 Update 에 해당 하지 않기 때문에
+            언마운트 및 마운트가 일어나지 않아 화면에 변화는 없다.
+        */
+        const increaseRef = () => {
+          numberRef.current = numberRef.current + 1;
+          console.log("currentValue : ", numberRef.current);
+        };
 
         return (
           <>
             <h1>Number : {number}</h1>
-            <button onClick={increase}>+ 1</button>
+            <h1>Variable : {variable}</h1>
+            <h1>NumberRef : {numberRef.current}</h1>
+            <button onClick={increaseNumber}>넘버 증가</button>
+            <button onClick={increaseVariable}>Variable 증가</button>
+            <button onClick={increaseRef}>Ref 증가</button>
           </>
         );
       }
