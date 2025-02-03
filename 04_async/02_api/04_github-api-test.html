@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState } = React;
+
+      function App() {
+        const [imgUrl, setImgUrl] = useState("");
+        return (
+          <>
+            <SearchBox setImgUrl={setImgUrl} />
+            <br />
+            <ImageBox imgUrl={imgUrl} />
+          </>
+        );
+      }
+
+      function SearchBox({ setImgUrl }) {
+        const [imageName, setImageName] = useState("");
+
+        const onChangeHandler = (e) => {
+          setImageName(e.target.value);
+        };
+
+        // 1. fetch
+        // const onClickHandler = () => {
+        //   fetch("https://api.github.com/emojis")
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //       console.log(data);
+        //       setImgUrl(data[imageName]);
+        //     });
+        // };
+
+        // 2. axios
+        // const onClickHandler = () => {
+        //   axios.get("https://api.github.com/emojis").then((res) => {
+        //     console.log(res);
+        //     setImgUrl(res.data[imageName]);
+        //   });
+        // };
+
+        // 3. async, await
+        async function callImage() {
+          try {
+            const response = await fetch("https://api.github.com/emojis");
+
+            const json = await response.json();
+
+            console.log(json);
+
+            setImgUrl(json[imageName]);
+          } catch (error) {
+            console.error("에러 발생:", error);
+          }
+        }
+
+        const onClickHandler = () => {
+          callImage();
+        };
+
+        return (
+          <>
+            <input type="text" value={imageName} onChange={onChangeHandler} />
+            <button onClick={onClickHandler}>검색</button>
+          </>
+        );
+      }
+
+      function ImageBox({ imgUrl }) {
+        console.log(imgUrl);
+
+        return !!imgUrl ? <img src={imgUrl} /> : <h1>검색 결과 없음</h1>;
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
