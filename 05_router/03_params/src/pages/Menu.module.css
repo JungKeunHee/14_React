@@ -1,22 +1,4 @@
-.MenuBox {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .MenuItem {
-    width: 250px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  .MenuImage {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
+.MenuBox div {
+  display: inline-block;
+  margin: 5px;
+}
