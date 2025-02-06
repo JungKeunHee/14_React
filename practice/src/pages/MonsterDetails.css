@@ -1,0 +1,50 @@
+.monster-placeholder {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #555;
+  margin-top: 20px;
+}
+
+.monster-card {
+  position: relative;
+  left: 31%;
+  top: 17%;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.monster-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+.monster-image-container {
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.monster-image {
+  width: 150px;
+  height: 150px;
+}
+
+.monster-info {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.monster-info p {
+  margin: 8px 0;
+  font-weight: bold;
+}

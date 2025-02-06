@@ -1,0 +1,121 @@
+/* 포켓몬 카드가 가로로 정렬되도록 설정 */
+.pokemon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 90%;
+}
+
+/* 개별 포켓몬 카드 스타일 */
+.pokemon-card {
+  width: 200px;
+  height: 260px;
+  background-color: white;
+  border-radius: 15px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-image {
+  width: 120px;
+  height: 120px;
+}
+
+.pokemon-id {
+  font-size: 14px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.pokemon-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 5px;
+}
+
+/* 포켓몬 타입 버튼 스타일 */
+.pokemon-types {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.pokemon-type {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* ✅ 노말, 비행 타입 추가 */
+.pokemon-type.노말 {
+  background-color: #a8a77a;
+}
+.pokemon-type.비행 {
+  background-color: #a98ff3;
+}
+
+.pokemon-type.불꽃 {
+  background-color: #ff5722;
+}
+.pokemon-type.물 {
+  background-color: #2196f3;
+}
+.pokemon-type.풀 {
+  background-color: #4caf50;
+}
+.pokemon-type.전기 {
+  background-color: #ffeb3b;
+  color: black;
+}
+.pokemon-type.독 {
+  background-color: #9c27b0;
+}
+.pokemon-type.얼음 {
+  background-color: #00bcd4;
+}
+.pokemon-type.격투 {
+  background-color: #e91e63;
+}
+.pokemon-type.땅 {
+  background-color: #795548;
+}
+.pokemon-type.에스퍼 {
+  background-color: #f44336;
+}
+.pokemon-type.벌레 {
+  background-color: #8bc34a;
+}
+.pokemon-type.바위 {
+  background-color: #616161;
+}
+.pokemon-type.고스트 {
+  background-color: #673ab7;
+}
+.pokemon-type.드래곤 {
+  background-color: #3f51b5;
+}
+.pokemon-type.악 {
+  background-color: #212121;
+}
+.pokemon-type.강철 {
+  background-color: #607d8b;
+}
+.pokemon-type.페어리 {
+  background-color: #ff69b4;
+}

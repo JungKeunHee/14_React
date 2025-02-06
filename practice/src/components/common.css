@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  border: 2px solid rgb(0, 38, 255);
+  width: 1920px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(255, 255, 255);
+  color: rgb(243, 227, 0);
+  -webkit-text-stroke: 1px rgb(113, 113, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle {
+  background-color: yellow;
+  width: 1920px;
+  height: 825px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  border-radius: 10px;
+  width: 1800px;
+  height: 750px;
+  background-color: white;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.list {
+  width: 900px;
+  height: 750px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3); /* 더 강한 그림자 */
+}
+
+.list h1 {
+  text-align: center;
+}
+
+.info {
+  width: 900px;
+  height: 750px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3); /* 더 강한 그림자 */
+}
+
+.info h1 {
+  text-align: center;
+}
+
+.monster-ball {
+  margin-right: 10px;
+  width: 40px;
+  height: auto;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+.search {
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1920px;
+}
+
+.input-box {
+  border: 0.5px solid blue;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-right: 10px;
+  width: 300px;
+  height: 30px;
+}
+
+.find {
+  margin-top: 20px;
+  width: 50px;
+  height: 33px;
+  background-color: rgb(74, 74, 255);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.find:hover {
+  background-color: blue;
+  cursor: pointer;
+}

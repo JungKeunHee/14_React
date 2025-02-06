@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 정렬을 위해 기본값 중앙 */
+  width: 100%;
+  height: 120px;
+  border: 1px solid lightblue;
+  position: relative;
+}
+
+/* 왼쪽 정렬된 로고 이미지 */
+.header .logo {
+  position: absolute;
+  left: 20px; /* 왼쪽 마진 */
+  height: 80px;
+}
+
+/* 제목 (포켓몬 도감) 영역 */
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  align-items: center; /* 글자와 이미지 수직 정렬 */
+  justify-content: center; /* 중앙 정렬 */
+  gap: 10px; /* 글씨와 몬스터볼 이미지 간격 */
+}
+
+/* 몬스터볼 이미지 스타일 */
+.header .pokeball {
+  width: 30px; /* 몬스터볼 크기 */
+  height: 30px;
+}
+
+.main {
+  width: 100%;
+  height: 800px; /* 고정 높이 */
+  overflow-y: auto; /* 내부에서만 스크롤 가능하도록 설정 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
